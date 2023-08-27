@@ -6,15 +6,15 @@ import styles from './Card.module.scss';
 import Image from './CardImage/CardImage';
 import Body from './CardBody/CardBody';
 
-/**
- * Component that renders a card which contains an image, body and price at the bottom.
- * @param {object} props - configuration object
- * @param {string} props.heading - card heading
- * @param {string} props.subHeading - card subheading
- * @param {number} props.price - price to display at the bottom of the card
- * @param {boolean} props.showBridge - whether to show the bridge image at the top
- * @returns {HTMLDivElement}
- */
+// /**
+//  * Component that renders a card which contains an image, body and price at the bottom.
+//  * @param {object} props - configuration object
+//  * @param {string} props.heading - card heading
+//  * @param {string} props.subHeading - card subheading
+//  * @param {number} props.price - price to display at the bottom of the card
+//  * @param {boolean} props.showBridge - whether to show the bridge image at the top
+//  * @returns {HTMLDivElement}
+//  */
 export default function Card({
   heading,
   subHeading,
@@ -30,14 +30,12 @@ export default function Card({
 }
 
 Card.propTypes = {
-  props: PropTypes.shape({
-    heading: PropTypes.string.isRequired,
-    subHeading: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    showBridge: PropTypes.bool,
-  }),
+  heading: PropTypes.string.isRequired,
+  subHeading: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  showBridge: PropTypes.bool,
 };
 
 Card.defaultProps = {
-  props: {},
+  showBridge: false,
 };
