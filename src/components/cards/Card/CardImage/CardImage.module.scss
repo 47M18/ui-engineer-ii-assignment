@@ -1,0 +1,24 @@
+.card-image {
+  height: 125px;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.with-placeholder {
+    background-size: 60px auto;
+    background-repeat: repeat;
+  }
+
+  img {
+    max-width: 70%;
+    max-height: 70%;
+    margin: 0 auto;
+    display: flex;
+    align-self: center;
+    justify-self: center;
+  }
+}

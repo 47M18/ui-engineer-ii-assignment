@@ -1,0 +1,49 @@
+.card-sorter {
+  padding: 12px;
+  border-bottom: 1px solid rgba(0,0,0,.3);
+  margin-bottom: 10px;
+  padding-bottom: 20px;
+
+  h4 {
+    margin: 0 15px 0 0;
+  }
+
+  .reset {
+    text-decoration: none;
+  }
+}
+
+.sort-option {
+  font-size: .75rem;
+  color: rgba(0,0,0,.5);
+  font-weight: bold;
+}
+
+@media (max-width: 500px) {
+  .container {
+    margin-top: 170px !important;
+  }
+
+  .card-sorter {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+
+    h4 {
+      margin: 0 0 15px 0;
+    }
+
+    .reset {
+      width: 100%;
+      display: block;
+    }
+  }
+}
+
+// @media screen and (min-width: 600px) {
+//   .sort-option {
+//     flex-direction: column;
+//   }
+// }
