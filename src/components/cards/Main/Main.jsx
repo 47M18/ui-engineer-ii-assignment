@@ -16,9 +16,9 @@ export default function Main() {
   const [displayCount, setDisplayCount] = useState(6);
 
   const handleSort = ({ target: { dataset } }) => {
-    if (!dataset.type && !dataset.method) return;
-
     const { type, method } = dataset;
+
+    if (!type || !method) return;
 
     setSortedData((current) => ({
       data: [...current.data].sort((currentItem, nextItem) => {
