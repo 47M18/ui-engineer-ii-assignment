@@ -29,4 +29,12 @@ header {
     margin-top: 1rem;
     justify-content: space-around;
   }
+
+  .cards-container {
+    margin-top: 0;
+
+    .row {
+      padding-top: 0;
+    }
+  }
 }

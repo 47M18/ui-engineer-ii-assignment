@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import './CardsWithPagination.scss';
 import { Button, Pagination } from 'react-bootstrap';
 import Card from '../Card/Card';
 
@@ -28,13 +29,13 @@ export default function CardsWithPagination({
 
   return (
     <>
-      <div className="p-0 d-flex align-items-center">
-        <div>
+      <div className="p-0 d-flex align-items-center quantity-and-pagination">
+        <div className="quantity">
           <Button disabled={displayCount <= 1} onClick={removeOne} title="Decrease number of items in row">-</Button>
           <span className="mx-2">Showing {displayCount} {displayCount === 1 ? 'item' : 'items'}</span>
           <Button disabled={displayCount >= 6} onClick={addOne} title="Increase number of items in row">+</Button>
         </div>
-        <Pagination className="mb-0 ms-auto">
+        <Pagination className="pagination">
           <Pagination.Prev disabled={currentPage === 1} onClick={() => setCurrentPage(currentPage - 1)} title="Previous page" />
           {
             Array(numberOfPages()).fill('').map((_, i) => (

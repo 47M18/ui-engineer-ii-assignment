@@ -1,0 +1,18 @@
+.quantity-and-pagination {
+  .pagination {
+    margin-bottom: 0;
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 500px) {
+  .quantity-and-pagination {
+    flex-direction: column;
+    max-width: 100%;
+    overflow: auto;
+
+    .pagination {
+      margin: 15px 0 0;
+    }
+  }
+}
