@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 
+import './Main.scss';
+
 import data from '../../../../public/UIE-InterviewProject.json';
 import Card from '../Card/Card';
 import CardSorter from '../CardSorter/CardSorter';
 import sortAscending from '../../../util/sortAscending';
 import sortDescending from '../../../util/sortDescending';
+import PaginationToggle from '../PaginationToggle/PaginationToggle';
 import CardsWithPagination from '../CardsWithPagination/CardsWithPagination';
-import Options from '../Options/Options';
 
 export default function CardsContainer() {
   const [sortedData, setSortedData] = useState({ data, isSorted: false });
   const [enablePagination, setEnablePagination] = useState(true);
-  const [displayCount, setDisplayCount] = useState(4);
+  const [displayCount, setDisplayCount] = useState(6);
 
   const handleSort = ({ target: { dataset } }) => {
     if (!dataset.type && !dataset.method) return;
@@ -32,23 +34,27 @@ export default function CardsContainer() {
   const handleResetSort = () => setSortedData({ data, isSorted: false });
 
   return (
-    <div className="container mt-4">
-      <CardSorter isSorted={sortedData.isSorted} sortFn={handleSort} resetFn={handleResetSort} />
-      <Options paginationEnabled={enablePagination} togglePagination={() => setEnablePagination(!enablePagination)} />
-      <div className="row">
-        {
-          enablePagination === false
-            ? (
-              sortedData.data.map(({
-                Heading: heading,
-                Subheading: subHeading,
-                Price: price,
-                showBridge,
-              }) => <Card key={heading} heading={heading} subHeading={subHeading} price={price} showBridge={showBridge} />)
-            )
-            : <CardsWithPagination items={sortedData.data} displayCount={displayCount} addOne={() => setDisplayCount((count) => count + 1)} removeOne={() => setDisplayCount((count) => count - 1)} />
-        }
+    <>
+      <header className="d-flex align-items-center container mt-4">
+        <CardSorter isSorted={sortedData.isSorted} sortFn={handleSort} resetFn={handleResetSort} />
+        <PaginationToggle paginationEnabled={enablePagination} togglePagination={() => setEnablePagination(!enablePagination)} />
+      </header>
+      <div className="container mt-4">
+        <div className="row">
+          {
+            enablePagination === false
+              ? (
+                sortedData.data.map(({
+                  Heading: heading,
+                  Subheading: subHeading,
+                  Price: price,
+                  showBridge,
+                }) => <Card key={heading} heading={heading} subHeading={subHeading} price={price} showBridge={showBridge} />)
+              )
+              : <CardsWithPagination items={sortedData.data} displayCount={displayCount} addOne={() => setDisplayCount((count) => count + 1)} removeOne={() => setDisplayCount((count) => count - 1)} />
+          }
+        </div>
       </div>
-    </div>
+    </>
   );
 }

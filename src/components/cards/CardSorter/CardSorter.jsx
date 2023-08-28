@@ -32,8 +32,8 @@ export default function CardSorter({ sortFn, resetFn, isSorted }) {
         <Dropdown className="ms-2">
           <Dropdown.Toggle>Price</Dropdown.Toggle>
           <Dropdown.Menu>
-            <Dropdown.Item data-type="Price" data-method="ascending">Lowest to Highest {sortOption('($ to $$$)')}</Dropdown.Item>
-            <Dropdown.Item data-type="Price" data-method="descending">Highest to Lowest {sortOption('($$$ to $)')}</Dropdown.Item>
+            <Dropdown.Item data-type="Price" data-method="ascending">Low to High {sortOption('($ to $$$)')}</Dropdown.Item>
+            <Dropdown.Item data-type="Price" data-method="descending">High to Low {sortOption('($$$ to $)')}</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
       </ButtonGroup>

@@ -27,11 +27,14 @@ export default function CardsWithPagination({
 
   return (
     <>
-      <div>
-        <span>Items in row: {displayCount}</span>
-        <Button className="ms-3" disabled={displayCount <= 1} onClick={removeOne}>-</Button>
-        <Button className="ms-1" disabled={displayCount >= 6} onClick={addOne}>+</Button>
-        <Pagination>
+      <div className="p-0 d-flex align-items-center">
+        <div>
+          <Button disabled={displayCount <= 1} onClick={removeOne}>-</Button>
+          <span className="mx-2">Showing {displayCount} {displayCount === 1 ? 'item' : 'items'}</span>
+          <Button disabled={displayCount >= 6} onClick={addOne}>+</Button>
+        </div>
+        <Pagination className="mb-0 ms-auto">
+          <Pagination.Prev disabled={currentPage === 1} onClick={() => setCurrentPage(currentPage - 1)} />
           {
             Array(numberOfPages()).fill('').map((_, i) => (
               <Pagination.Item key={`page-${i + 1}`} active={currentPage === i + 1} onClick={() => setCurrentPage(i + 1)}>
@@ -39,6 +42,7 @@ export default function CardsWithPagination({
               </Pagination.Item>
             ))
           }
+          <Pagination.Next disabled={currentPage === numberOfPages()} onClick={() => setCurrentPage(currentPage + 1)} />
         </Pagination>
       </div>
       {

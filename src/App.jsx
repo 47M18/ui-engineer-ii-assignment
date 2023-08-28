@@ -3,10 +3,10 @@ import React from 'react';
 
 import './styles.scss';
 import 'normalize.css';
-import CardsContainer from './components/cards/CardsContainer/CardsContainer';
+import Main from './components/cards/Main/Main';
 
 export default function App() {
   return (
-    <CardsContainer />
+    <Main />
   );
 }
