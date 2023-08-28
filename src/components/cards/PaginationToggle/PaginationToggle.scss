@@ -1,3 +1,23 @@
 .pagination-toggle {
-  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+@media (max-width: 595px) {
+  .pagination-toggle {
+    font-size: .85rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .pagination-toggle {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 0;
+
+    input {
+      margin-left: 0 !important;
+    }
+  }
 }

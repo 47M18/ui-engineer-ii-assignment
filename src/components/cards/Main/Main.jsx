@@ -10,7 +10,7 @@ import sortDescending from '../../../util/sortDescending';
 import PaginationToggle from '../PaginationToggle/PaginationToggle';
 import CardsWithPagination from '../CardsWithPagination/CardsWithPagination';
 
-export default function CardsContainer() {
+export default function Main() {
   const [sortedData, setSortedData] = useState({ data, isSorted: false });
   const [enablePagination, setEnablePagination] = useState(true);
   const [displayCount, setDisplayCount] = useState(6);
@@ -35,11 +35,11 @@ export default function CardsContainer() {
 
   return (
     <>
-      <header className="d-flex align-items-center container mt-4">
+      <header className="d-flex align-items-center container">
         <CardSorter isSorted={sortedData.isSorted} sortFn={handleSort} resetFn={handleResetSort} />
         <PaginationToggle paginationEnabled={enablePagination} togglePagination={() => setEnablePagination(!enablePagination)} />
       </header>
-      <div className="container mt-4">
+      <div className="cards-container container">
         <div className="row">
           {
             enablePagination === false

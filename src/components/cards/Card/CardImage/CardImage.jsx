@@ -19,3 +19,7 @@ export default function CardImage({ showBridge = false } = {}) {
     </div>
   );
 }
+
+CardImage.defaultProps = {
+  showBridge: false,
+};

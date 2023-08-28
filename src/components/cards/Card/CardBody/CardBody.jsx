@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './CardBody.module.scss';
 import toCurrency from '../../../../util/toCurrency';
@@ -14,3 +15,9 @@ export default function CardBody({ heading, subHeading, price }) {
     </div>
   );
 }
+
+CardBody.propTypes = {
+  heading: PropTypes.string.isRequired,
+  subHeading: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+};

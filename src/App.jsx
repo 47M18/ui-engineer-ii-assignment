@@ -3,6 +3,7 @@ import React from 'react';
 
 import './styles.scss';
 import 'normalize.css';
+
 import Main from './components/cards/Main/Main';
 
 export default function App() {

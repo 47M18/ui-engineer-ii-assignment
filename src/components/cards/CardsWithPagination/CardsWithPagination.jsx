@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Button, Pagination } from 'react-bootstrap';
 import Card from '../Card/Card';
 
@@ -29,12 +30,12 @@ export default function CardsWithPagination({
     <>
       <div className="p-0 d-flex align-items-center">
         <div>
-          <Button disabled={displayCount <= 1} onClick={removeOne}>-</Button>
+          <Button disabled={displayCount <= 1} onClick={removeOne} title="Decrease number of items in row">-</Button>
           <span className="mx-2">Showing {displayCount} {displayCount === 1 ? 'item' : 'items'}</span>
-          <Button disabled={displayCount >= 6} onClick={addOne}>+</Button>
+          <Button disabled={displayCount >= 6} onClick={addOne} title="Increase number of items in row">+</Button>
         </div>
         <Pagination className="mb-0 ms-auto">
-          <Pagination.Prev disabled={currentPage === 1} onClick={() => setCurrentPage(currentPage - 1)} />
+          <Pagination.Prev disabled={currentPage === 1} onClick={() => setCurrentPage(currentPage - 1)} title="Previous page" />
           {
             Array(numberOfPages()).fill('').map((_, i) => (
               <Pagination.Item key={`page-${i + 1}`} active={currentPage === i + 1} onClick={() => setCurrentPage(i + 1)}>
@@ -42,7 +43,7 @@ export default function CardsWithPagination({
               </Pagination.Item>
             ))
           }
-          <Pagination.Next disabled={currentPage === numberOfPages()} onClick={() => setCurrentPage(currentPage + 1)} />
+          <Pagination.Next disabled={currentPage === numberOfPages()} onClick={() => setCurrentPage(currentPage + 1)} title="Next page" />
         </Pagination>
       </div>
       {
@@ -56,3 +57,19 @@ export default function CardsWithPagination({
     </>
   );
 }
+
+CardsWithPagination.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.shape({
+    Heading: PropTypes.string.isRequired,
+    Subheading: PropTypes.string.isRequired,
+    Price: PropTypes.number.isRequired,
+    showBridge: PropTypes.bool,
+  })).isRequired,
+  displayCount: PropTypes.number,
+  addOne: PropTypes.func.isRequired,
+  removeOne: PropTypes.func.isRequired,
+};
+
+CardsWithPagination.defaultProps = {
+  displayCount: 5,
+};

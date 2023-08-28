@@ -1,6 +1,9 @@
 import React from 'react';
-import { Button, ButtonGroup, Dropdown } from 'react-bootstrap';
+import PropTypes from 'prop-types';
+
 import './CardSorter.scss';
+
+import { Button, ButtonGroup, Dropdown } from 'react-bootstrap';
 
 function sortOption(text) {
   return (
@@ -12,25 +15,25 @@ function sortOption(text) {
 
 export default function CardSorter({ sortFn, resetFn, isSorted }) {
   return (
-    <div className="d-flex align-items-center card-sorter">
+    <div className={`d-flex align-items-center card-sorter ${isSorted ? 'sorted' : 'not-sorted'}`}>
       <h4>Sort by:</h4>
-      <ButtonGroup onClick={sortFn}>
+      <ButtonGroup onClick={sortFn} className="button-group">
         <Dropdown>
-          <Dropdown.Toggle>Heading</Dropdown.Toggle>
+          <Dropdown.Toggle title="Sort by heading">Heading</Dropdown.Toggle>
           <Dropdown.Menu>
             <Dropdown.Item data-type="Heading" data-method="ascending">Ascending {sortOption('(A to Z)')}</Dropdown.Item>
             <Dropdown.Item data-type="Heading" data-method="descending">Descending {sortOption('(Z to A)')}</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
         <Dropdown className="ms-2">
-          <Dropdown.Toggle>Subheading</Dropdown.Toggle>
+          <Dropdown.Toggle title="Sort by subheading">Subheading</Dropdown.Toggle>
           <Dropdown.Menu>
             <Dropdown.Item data-type="Subheading" data-method="ascending">Ascending {sortOption('(A to Z)')}</Dropdown.Item>
             <Dropdown.Item data-type="Subheading" data-method="descending">Descending {sortOption('(Z to A)')}</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
         <Dropdown className="ms-2">
-          <Dropdown.Toggle>Price</Dropdown.Toggle>
+          <Dropdown.Toggle title="Sort by price">Price</Dropdown.Toggle>
           <Dropdown.Menu>
             <Dropdown.Item data-type="Price" data-method="ascending">Low to High {sortOption('($ to $$$)')}</Dropdown.Item>
             <Dropdown.Item data-type="Price" data-method="descending">High to Low {sortOption('($$$ to $)')}</Dropdown.Item>
@@ -41,3 +44,9 @@ export default function CardSorter({ sortFn, resetFn, isSorted }) {
     </div>
   );
 }
+
+CardSorter.propTypes = {
+  sortFn: PropTypes.func.isRequired,
+  resetFn: PropTypes.func.isRequired,
+  isSorted: PropTypes.bool.isRequired,
+};

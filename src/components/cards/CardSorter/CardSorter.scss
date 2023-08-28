@@ -5,6 +5,7 @@
 
   .reset {
     text-decoration: none;
+    line-height: 1;
   }
 }
 
@@ -14,31 +15,26 @@
   font-weight: bold;
 }
 
-@media (max-width: 500px) {
-  .container {
-    margin-top: 170px !important;
+@media (max-width: 767px) {
+  h4 {
+    font-size: 1rem;
   }
+}
 
+@media (max-width: 595px) {
   .card-sorter {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    flex-direction: column;
-
-    h4 {
-      margin: 0 0 15px 0;
-    }
-
-    .reset {
-      width: 100%;
-      display: block;
+    button, .reset {
+      font-size: .75rem;
     }
   }
 }
 
-// @media screen and (min-width: 600px) {
-//   .sort-option {
-//     flex-direction: column;
-//   }
-// }
+@media (max-width: 500px) {
+  .card-sorter {
+    flex-direction: column;
+
+    h4 {
+      margin-bottom: 6px;
+    }
+  }
+}
