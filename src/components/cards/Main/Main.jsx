@@ -18,16 +18,14 @@ export default function Main() {
   const [displayCount, setDisplayCount] = useState(6);
 
   useEffect(() => {
-    fetch('https://uie2-server.onrender.com/api/itemss')
+    fetch('https://uie2-server.onrender.com/api/items')
       .then((res) => res.json())
       .then((items) => {
-        // originalItems = [...items];
         setUnsortedItems(items);
         setData((current) => ({ ...current, items }));
       })
       .catch((err) => {
         console.error('An error occurred while fetching data from the API. Falling back to JSON file.', err);
-        // originalItems = [...itemsFromFile];
         setUnsortedItems(itemsFromFile);
         setData((current) => ({ ...current, items: itemsFromFile }));
       });
